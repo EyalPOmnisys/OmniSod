@@ -1,0 +1,139 @@
+.status-container {
+  /* Container placeholder */
+}
+
+.status-inner {
+  background: #1e1e1e;
+  content: stretch;
+  display: flex;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2px;
+  position: relative;
+  border-radius: 5px;
+}
+
+.status-icon-img {
+  position: relative;
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+}
+
+.status-icon-img img {
+  display: block;
+  max-width: none;
+  width: 100%;
+  height: 100%;
+}
+
+.status-text-container {
+  content: stretch;
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.status-text {
+  font-family: Exo, sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  position: relative;
+  flex-shrink: 0;
+  font-size: 10px;
+  color: white;
+  text-align: right;
+}
+
+.status-dropdown-container {
+  content: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: clip;
+  padding: 25.2px 12.6px;
+  position: relative;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+}
+
+.status-dropdown-vector {
+  transform: translateY(-50%);
+  position: absolute;
+  aspect-ratio: 16.935546875/10.1328125;
+  left: 23.33%;
+  right: 23.33%;
+  top: 50%;
+}
+
+.status-dropdown-vector img {
+  display: block;
+  max-width: none;
+  width: 100%;
+  height: 100%;
+}
+
+.status-icon-container {
+  background: #1e1e1e;
+  content: stretch;
+  display: flex;
+  align-items: center;
+  overflow: clip;
+  padding: 2px;
+  position: relative;
+  border-radius: 5px;
+}
+
+.status-icon-inner {
+  content: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: clip;
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.status-icon-show {
+  flex: 1 0 0;
+  height: 100%;
+  min-height: 1px;
+  min-width: 1px;
+  overflow: clip;
+  position: relative;
+}
+
+.status-icon-edit {
+  flex: 1 0 0;
+  height: 100%;
+  min-height: 1px;
+  min-width: 1px;
+  overflow: clip;
+  position: relative;
+}
+
+.status-icon-vector-view {
+  position: absolute;
+  inset: 22% 8%;
+}
+
+.status-icon-vector-edit {
+  position: absolute;
+  inset: 8%;
+}
+
+.status-icon-vector-view img,
+.status-icon-vector-edit img {
+  display: block;
+  max-width: none;
+  width: 100%;
+  height: 100%;
+}

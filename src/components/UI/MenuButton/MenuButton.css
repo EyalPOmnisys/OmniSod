@@ -1,0 +1,19 @@
+.menu-button-container {
+  content: stretch;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  position: relative;
+}
+
+.menu-button-text {
+  font-family: Exo, sans-serif;
+  font-weight: 400;
+  line-height: normal;
+  position: relative;
+  flex-shrink: 0;
+  font-size: 14px;
+  color: white;
+}

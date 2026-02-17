@@ -1,0 +1,47 @@
+.more-button-container {
+  /* Container placeholder */
+}
+
+.more-button-inner {
+  background: #282828;
+  content: stretch;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  position: relative;
+}
+
+.more-button-icon {
+  content: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: clip;
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.more-button-icon-inner {
+  flex: 1 0 0;
+  height: 100%;
+  min-height: 1px;
+  min-width: 1px;
+  overflow: clip;
+  position: relative;
+}
+
+.more-button-vector {
+  position: absolute;
+  inset: 41.25% 8%;
+}
+
+.more-button-vector img {
+  display: block;
+  max-width: none;
+  width: 100%;
+  height: 100%;
+}

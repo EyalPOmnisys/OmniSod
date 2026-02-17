@@ -1,15 +1,18 @@
 @import "tailwindcss";
+@import "cesium/Build/Cesium/Widgets/widgets.css";
+@import "cesium-navigation-es6/dist/styles/cesium-navigation.css";
+@import "omnisys_cesium_lib/dist/styles/ocesium.css";
+@import "omnisys_cesium_lib/dist/styles/components.css";
+@import "omnisys_cesium_lib/dist/styles/popup-modal.css";
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-exo: var(--font-exo);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +26,11 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }

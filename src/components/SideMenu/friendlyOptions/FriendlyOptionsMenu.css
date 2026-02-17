@@ -1,0 +1,42 @@
+.friendly-options-menu {
+  background: #1e1e1e;
+  content: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: calc(10px * var(--side-menu-scale, 1));
+  align-items: flex-start;
+  padding: calc(4px * var(--side-menu-scale, 1));
+  border-radius: var(--side-menu-radius, 5px);
+  z-index: 3;
+  width: auto;
+  position: absolute;
+  left: calc(100% + calc(14px * var(--side-menu-scale, 1)));
+  top: calc(-4px * var(--side-menu-scale, 1));
+}
+
+.friendly-option-button {
+  background: #393939;
+  border: none;
+  content: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: var(--side-menu-radius, 5px);
+  flex-shrink: 0;
+  width: var(--side-menu-button-size, 44px);
+  height: var(--side-menu-button-size, 44px);
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.friendly-option-button:hover {
+  background: #4a4a4a;
+}
+
+.friendly-option-icon {
+  width: var(--side-menu-icon-size, 24px);
+  height: var(--side-menu-icon-size, 24px);
+  display: block;
+}
