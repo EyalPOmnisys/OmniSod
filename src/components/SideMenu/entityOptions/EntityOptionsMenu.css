@@ -1,4 +1,4 @@
-.friendly-options-menu {
+.entity-options-menu {
   background: #1e1e1e;
   content: stretch;
   display: flex;
@@ -14,7 +14,7 @@
   top: calc(-4px * var(--side-menu-scale, 1));
 }
 
-.friendly-option-button {
+.entity-option-button {
   background: #393939;
   border: none;
   content: stretch;
@@ -31,11 +31,20 @@
   transition: background-color 0.2s ease;
 }
 
-.friendly-option-button:hover {
+.entity-option-button:hover {
   background: #4a4a4a;
 }
 
-.friendly-option-icon {
+.entity-option-icon {
+  width: var(--side-menu-icon-size, 24px);
+  height: var(--side-menu-icon-size, 24px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.entity-option-icon svg,
+.entity-option-icon img {
   width: var(--side-menu-icon-size, 24px);
   height: var(--side-menu-icon-size, 24px);
   display: block;

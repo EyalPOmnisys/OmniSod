@@ -6,11 +6,12 @@ import {
   destroyOmnisysCesium,
   initOmnisysCesium,
   type MapRuntimeInstance,
-} from "./initOmnisysCesium";
+} from "@/features/map/runtime/omnisysCesiumRuntime";
 
 let sharedRuntimeInstance: MapRuntimeInstance | null = null;
 let sharedRuntimeContainer: HTMLDivElement | null = null;
 let pendingDestroyTimer: ReturnType<typeof setTimeout> | null = null;
+const DESTROY_DEBOUNCE_MS = 150;
 
 export function CesiumMap({ className }: { className?: string }) {
   const cesiumContainerRef = useRef<HTMLDivElement>(null);
@@ -51,7 +52,7 @@ export function CesiumMap({ className }: { className?: string }) {
           sharedRuntimeContainer = null;
         }
         pendingDestroyTimer = null;
-      }, 0);
+      }, DESTROY_DEBOUNCE_MS);
     };
   }, []);
 

@@ -2,6 +2,16 @@
 import React, { useState } from "react";
 import { ASSETS } from "../../constants/assets";
 import { MenuButton } from "../UI/MenuButton/MenuButton";
+
+function OmnisysLogo() {
+  return (
+    <svg width="30" height="30" viewBox="10 10 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M35.9648 33.9009C33.4076 37.6199 29.1099 39.8981 24.466 39.9965C19.8221 40.0949 15.4237 38.0009 12.6977 34.3939L10.0291 35.8515L14.3114 29.1921C14.3114 29.1961 14.3137 29.2 14.315 29.2035C15.5613 33.2852 19.4939 36.2668 24.1528 36.2668C26.5975 36.2697 28.9621 35.4313 30.8169 33.9039L35.9648 33.9009Z" fill="#14499E"/>
+      <path d="M26.5788 16.8803H26.572C25.7798 16.6968 24.9678 16.6043 24.1528 16.6048C18.4922 16.6048 13.903 21.0065 13.903 26.4358C13.9028 27.0482 13.9618 27.6592 14.0792 28.2611L11.4329 32.3769C10.4924 30.5272 10.005 28.4959 10.0077 26.438C10.0077 19.4332 15.5431 13.6686 22.6475 12.9476V10L26.5788 16.8803Z" fill="#4CAF4E"/>
+      <path d="M31.5747 33.2254H31.5642C31.5657 33.2237 31.5674 33.2221 31.5692 33.2206C33.3921 31.3941 34.4083 28.9625 34.4054 26.4342C34.4054 22.142 31.5369 18.4927 27.5387 17.1521H27.5409L25.1113 12.8997C32.4776 13.3713 38.3003 19.2512 38.3003 26.4368C38.302 28.2905 37.9061 30.1247 37.1374 31.8254L39.7783 33.2254H31.5747Z" fill="#F7901E"/>
+    </svg>
+  );
+}
 import { MoreButton } from "../UI/MoreButton/MoreButton";
 import { Status, StatusIcon } from "../Status/Status";
 import "./TopBar.css";
@@ -75,13 +85,7 @@ export function TopBar() {
         <div className="logo-container" data-name="Logo Container" data-node-id="499:13970">
           <div className="logo" data-name="Logo" data-node-id="499:13971">
             <div className="logo-svg" data-name="BRO SymbolSVG" data-node-id="499:13972">
-              <div className="logo-svg-window" data-name="Window" data-node-id="I499:13972;623:2907">
-                <div className="logo-svg-window" data-name="Installer-/-#" data-node-id="I499:13972;623:2908">
-                  <div className="logo-svg-window" data-name="BRO-Color" data-node-id="I499:13972;623:2909">
-                    <img alt="" src={ASSETS.imgBroColor} />
-                  </div>
-                </div>
-              </div>
+              <OmnisysLogo />
             </div>
           </div>
           <div className="menu-button-wrapper" data-name="Menu button" data-node-id="499:13973">

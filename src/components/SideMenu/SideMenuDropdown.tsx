@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import { ASSETS } from "../../constants/assets";
-import { triggerRadarComplexShapeFromFriendlyMenu } from "../Map/initOmnisysCesium";
+import {
+  triggerRadarComplexShapeFromFriendlyMenu,
+  triggerRouteComplexShapeFromEnemyMenu,
+} from "@/features/map/runtime/omnisysCesiumRuntime";
+import type {
+  EnemyOptionSelection,
+  FriendlyOptionSelection,
+  SideMenuPrimaryOption,
+} from "@/types/entities";
 import { FriendlyOptionsMenu } from "./friendlyOptions/FriendlyOptionsMenu";
+import { EnemyOptionsMenu } from "./enemyOptions/EnemyOptionsMenu";
 import "./SideMenuDropdown.css";
 
-type YeshutType = "Friendly" | "Enemy" | "Geo" | "OperationalGeo";
-
 interface DropdownItemProps {
-  type: YeshutType;
+  type: SideMenuPrimaryOption;
   isActive?: boolean;
   onClick?: () => void;
 }
@@ -42,7 +49,7 @@ function DropdownItem({ type, isActive, onClick }: DropdownItemProps) {
             className="enemy-icon side-menu-dropdown-icon-svg"
             aria-hidden="true"
           >
-            <path d="M0 8.48535L8.48528 7.03335e-05L16.9706 8.48535L8.48528 16.9706L0 8.48535Z" fill="#EF5350" />
+            <path d="M0 8.48535L8.48528 7.03335e-05L16.9706 8.48535L8.48528 16.9706L0 8.48535Z" fill={isActive ? "#1E1E1E" : "#EF5350"} />
           </svg>
         );
       case "Geo":
@@ -79,7 +86,13 @@ function DropdownItem({ type, isActive, onClick }: DropdownItemProps) {
   return (
     <button
       type="button"
-      className={`side-menu-dropdown-button ${isActive ? "side-menu-dropdown-button-active" : ""}`}
+      className={`side-menu-dropdown-button ${
+        isActive
+          ? type === "Enemy"
+            ? "side-menu-dropdown-button-active-enemy"
+            : "side-menu-dropdown-button-active"
+          : ""
+      }`}
       data-name="Dropdown button"
       onClick={onClick}
     >
@@ -92,9 +105,9 @@ function DropdownItem({ type, isActive, onClick }: DropdownItemProps) {
 }
 
 export function SideMenuDropdown({ id, className }: { id?: string; className?: string }) {
-  const [activeOption, setActiveOption] = useState<YeshutType | null>(null);
+  const [activeOption, setActiveOption] = useState<SideMenuPrimaryOption | null>(null);
 
-  const handleOptionClick = (type: YeshutType) => {
+  const handleOptionClick = (type: SideMenuPrimaryOption) => {
     setActiveOption(activeOption === type ? null : type);
   };
 
@@ -106,17 +119,42 @@ export function SideMenuDropdown({ id, className }: { id?: string; className?: s
           isActive={activeOption === "Friendly"}
           onClick={() => handleOptionClick("Friendly")}
         />
-        <DropdownItem type="Enemy" />
+        <DropdownItem
+          type="Enemy"
+          isActive={activeOption === "Enemy"}
+          onClick={() => handleOptionClick("Enemy")}
+        />
         <DropdownItem type="Geo" />
         <DropdownItem type="OperationalGeo" />
       </div>
       {activeOption === "Friendly" && (
         <FriendlyOptionsMenu
           className="friendly-options-menu-dropdown"
-          onOptionClick={async (friendlyType) => {
-            const didTrigger = await triggerRadarComplexShapeFromFriendlyMenu();
+          onOptionClick={async (friendlySelection: FriendlyOptionSelection) => {
+            const didTrigger = await triggerRadarComplexShapeFromFriendlyMenu({
+              iconPath: friendlySelection.iconPath,
+              color: friendlySelection.color,
+            });
             if (!didTrigger) {
-              console.warn("Friendly option click could not trigger radar complex shape:", friendlyType);
+              console.warn(
+                "Friendly option click could not trigger radar complex shape:",
+                friendlySelection.type
+              );
+            }
+          }}
+        />
+      )}
+      {activeOption === "Enemy" && (
+        <EnemyOptionsMenu
+          className="enemy-options-menu-dropdown"
+          onOptionClick={async (enemyOption: EnemyOptionSelection) => {
+            const didTrigger = await triggerRouteComplexShapeFromEnemyMenu({
+              iconPath: enemyOption.iconPath,
+              color: enemyOption.color,
+            });
+
+            if (!didTrigger) {
+              console.warn("Enemy option click could not trigger route complex shape:", enemyOption.type);
             }
           }}
         />

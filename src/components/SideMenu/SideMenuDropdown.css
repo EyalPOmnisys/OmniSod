@@ -86,6 +86,15 @@
   background: #29B6F6 !important;
 }
 
+.side-menu-dropdown-button-active-enemy {
+  background: #ef5350 !important;
+  border: 1px solid #ef5350;
+}
+
+.side-menu-dropdown-button-active-enemy:hover {
+  background: #ff6d6a !important;
+}
+
 .side-menu-dropdown-items {
   display: flex;
   flex-direction: column;
