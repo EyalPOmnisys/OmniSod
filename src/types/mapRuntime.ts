@@ -22,3 +22,13 @@ export type FriendlyRadarShapeOptions = {
   iconPath: string;
   color?: string;
 };
+
+export type GeoPointShapeOptions = {
+  iconPath: string;
+  color?: string;
+};
+
+export type OperationalGeoShapeOptions = {
+  iconPath: string;
+  color?: string;
+};

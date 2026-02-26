@@ -98,7 +98,15 @@ function DropdownIcon({
   );
 }
 
-export function PointModal() {
+export type PointModalProps = {
+  visible: boolean;
+  entityName?: string;
+  onClose?: () => void;
+};
+
+export function PointModal({ visible, entityName, onClose }: PointModalProps) {
+  if (!visible) return null;
+
   return (
     <div className="point-modal" data-name="Modal" data-node-id="421:17706">
       {/* Header */}
@@ -106,6 +114,16 @@ export function PointModal() {
         <div className="modal-title" data-node-id="I421:17706;89:1547">
           <p dir="auto">Point</p>
         </div>
+        {onClose && (
+          <button
+            type="button"
+            className="modal-close-button"
+            onClick={onClose}
+            aria-label="Close"
+          >
+            ×
+          </button>
+        )}
       </div>
 
       {/* Content */}
@@ -119,7 +137,7 @@ export function PointModal() {
             <div className="input-field" data-name="Input Field" data-node-id="I421:17706;89:1683;127:2469;44:3802">
               <div className="input-container" data-name="Container" data-node-id="I421:17706;89:1683;127:2469;44:3802;127:2120">
                 <p className="input-text" dir="auto" data-node-id="I421:17706;89:1683;127:2469;44:3802;127:2121">
-                  Label
+                  {entityName ?? "Geo Point"}
                 </p>
               </div>
               <div className="input-suffix" data-name="Suffix" data-node-id="I421:17706;89:1683;127:2469;44:3802;127:1592">
@@ -533,12 +551,14 @@ export function PointModal() {
       {/* Footer */}
       <div className="modal-footer" data-node-id="I421:17706;89:1558">
         <div className="footer-buttons" data-node-id="I421:17706;89:1559">
-          <Button 
-            className="button button-secondary" 
-            icon={false} 
-            text="Cancel" 
-            type="Secondary" 
-          />
+          <div role="button" tabIndex={0} onClick={onClose} onKeyDown={(e) => e.key === "Enter" && onClose?.()}>
+            <Button 
+              className="button button-secondary" 
+              icon={false} 
+              text="Cancel" 
+              type="Secondary" 
+            />
+          </div>
           <Button 
             className="button button-primary" 
             icon={false} 

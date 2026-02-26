@@ -95,6 +95,32 @@
   background: #ff6d6a !important;
 }
 
+.side-menu-dropdown-button-active-geo {
+  background: #8C9EFF !important;
+  border: 1px solid #8C9EFF;
+}
+
+.side-menu-dropdown-button-active-geo:hover {
+  background: #a5b4ff !important;
+}
+
+.side-menu-dropdown-button-active-geo .side-menu-dropdown-icon-svg path {
+  fill: #1E1E1E !important;
+}
+
+.side-menu-dropdown-button-active-operational-geo {
+  background: #F9A825 !important;
+  border: 1px solid #F9A825;
+}
+
+.side-menu-dropdown-button-active-operational-geo:hover {
+  background: #ffb733 !important;
+}
+
+.side-menu-dropdown-button-active-operational-geo .side-menu-dropdown-icon-svg path {
+  fill: #1E1E1E !important;
+}
+
 .side-menu-dropdown-items {
   display: flex;
   flex-direction: column;
@@ -132,4 +158,16 @@
 
 .side-menu-dropdown-button-active .side-menu-dropdown-icon-svg {
   transform: translate(-50%, -50%);
+}
+
+.enemy-options-menu-dropdown {
+  top: calc(48px * var(--side-menu-scale, 1));
+}
+
+.geo-options-menu-dropdown {
+  top: calc(100px * var(--side-menu-scale, 1));
+}
+
+.operational-geo-options-menu-dropdown {
+  top: calc(152px * var(--side-menu-scale, 1));
 }

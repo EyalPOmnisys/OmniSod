@@ -51,6 +51,22 @@
   white-space: pre-wrap;
 }
 
+.modal-close-button {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  padding: 0 4px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.modal-close-button:hover {
+  color: white;
+}
+
 /* Content Section */
 .modal-content {
   background: #282828;

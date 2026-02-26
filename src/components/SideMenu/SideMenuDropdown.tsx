@@ -3,14 +3,21 @@ import { ASSETS } from "../../constants/assets";
 import {
   triggerRadarComplexShapeFromFriendlyMenu,
   triggerRouteComplexShapeFromEnemyMenu,
+  triggerPointFromGeoMenu,
+  triggerRouteFromOperationalGeoMenu,
+  triggerPolygonFromOperationalGeoMenu,
 } from "@/features/map/runtime/omnisysCesiumRuntime";
 import type {
   EnemyOptionSelection,
   FriendlyOptionSelection,
+  GeoOptionSelection,
+  OperationalGeoOptionSelection,
   SideMenuPrimaryOption,
 } from "@/types/entities";
 import { FriendlyOptionsMenu } from "./friendlyOptions/FriendlyOptionsMenu";
 import { EnemyOptionsMenu } from "./enemyOptions/EnemyOptionsMenu";
+import { GeoOptionsMenu } from "./geoOptions/GeoOptionsMenu";
+import { OperationalGeoOptionsMenu } from "./operationalGeoOptions/OperationalGeoOptionsMenu";
 import "./SideMenuDropdown.css";
 
 interface DropdownItemProps {
@@ -90,14 +97,20 @@ function DropdownItem({ type, isActive, onClick }: DropdownItemProps) {
         isActive
           ? type === "Enemy"
             ? "side-menu-dropdown-button-active-enemy"
-            : "side-menu-dropdown-button-active"
+            : type === "Geo"
+              ? "side-menu-dropdown-button-active-geo"
+              : type === "OperationalGeo"
+                ? "side-menu-dropdown-button-active-operational-geo"
+                : "side-menu-dropdown-button-active"
           : ""
       }`}
       data-name="Dropdown button"
       onClick={onClick}
     >
       <span className="side-menu-dropdown-indicator">
-        <img alt="" src={ASSETS.imgSidebarDropdownIndicator} />
+        <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 0V6H0L6 0Z" fill="white"/>
+        </svg>
       </span>
       {getIconElement()}
     </button>
@@ -124,8 +137,16 @@ export function SideMenuDropdown({ id, className }: { id?: string; className?: s
           isActive={activeOption === "Enemy"}
           onClick={() => handleOptionClick("Enemy")}
         />
-        <DropdownItem type="Geo" />
-        <DropdownItem type="OperationalGeo" />
+        <DropdownItem
+          type="Geo"
+          isActive={activeOption === "Geo"}
+          onClick={() => handleOptionClick("Geo")}
+        />
+        <DropdownItem
+          type="OperationalGeo"
+          isActive={activeOption === "OperationalGeo"}
+          onClick={() => handleOptionClick("OperationalGeo")}
+        />
       </div>
       {activeOption === "Friendly" && (
         <FriendlyOptionsMenu
@@ -155,6 +176,45 @@ export function SideMenuDropdown({ id, className }: { id?: string; className?: s
 
             if (!didTrigger) {
               console.warn("Enemy option click could not trigger route complex shape:", enemyOption.type);
+            }
+          }}
+        />
+      )}
+      {activeOption === "Geo" && (
+        <GeoOptionsMenu
+          className="geo-options-menu-dropdown"
+          onOptionClick={async (geoOption: GeoOptionSelection) => {
+            const didTrigger = await triggerPointFromGeoMenu({
+              iconPath: geoOption.iconPath,
+              color: geoOption.color,
+            });
+
+            if (!didTrigger) {
+              console.warn("Geo option click could not trigger geo point:", geoOption.type);
+            }
+          }}
+        />
+      )}
+      {activeOption === "OperationalGeo" && (
+        <OperationalGeoOptionsMenu
+          className="operational-geo-options-menu-dropdown"
+          onOptionClick={async (opGeoOption: OperationalGeoOptionSelection) => {
+            if (opGeoOption.type === "Route") {
+              const didTrigger = await triggerRouteFromOperationalGeoMenu({
+                iconPath: opGeoOption.iconPath,
+                color: opGeoOption.color,
+              });
+              if (!didTrigger) {
+                console.warn("OperationalGeo Route could not be triggered.");
+              }
+            } else if (opGeoOption.type === "Polygon") {
+              const didTrigger = await triggerPolygonFromOperationalGeoMenu({
+                iconPath: opGeoOption.iconPath,
+                color: opGeoOption.color,
+              });
+              if (!didTrigger) {
+                console.warn("OperationalGeo Polygon could not be triggered.");
+              }
             }
           }}
         />

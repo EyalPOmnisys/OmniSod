@@ -11,11 +11,9 @@ function LayersButton({ className }: { className?: string }) {
       <div className="layers-button-inner" data-name="Property 1=Default" data-node-id="33:2068">
         <div className="side-menu-button" data-name="Side menu button" data-node-id="291:2336">
           <div className="layers-icon-container" data-name="Icon" data-node-id="I291:2336;581:17617">
-            <div className="layers-icon" data-name="Layers" data-node-id="I291:2336;581:17617;36:544">
-              <div className="layers-vector" data-name="Vector" data-node-id="I291:2336;581:17617;36:544;2:17">
-                <img alt="" src={ASSETS.imgSidebarVectorNew} />
-              </div>
-            </div>
+            <svg width="21" height="14" viewBox="0 0 21 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.0638 1.09617L18.5556 5.48085L10.0881 9.87348L1.61248 5.47291L10.0638 1.09617ZM10.0638 0C9.93415 0 9.8045 0.031773 9.67485 0.0953191L0.291704 4.96454C-0.0972347 5.17901 -0.0972347 5.77475 0.291704 5.98922L9.67485 10.8584C9.8045 10.922 9.94225 10.9538 10.08 10.9538C10.2177 10.9538 10.3555 10.922 10.4851 10.8584L19.8683 5.98922C20.2572 5.77475 20.2572 5.17901 19.8683 4.96454L10.4446 0.0953191C10.315 0.031773 10.1853 0 10.0557 0H10.0638ZM10.6148 13.305L19.9979 8.43574C20.1276 8.36425 20.1843 8.20539 20.1114 8.0783C20.0385 7.95121 19.8764 7.8956 19.7468 7.96709L10.3636 12.8284C10.1853 12.9157 9.97466 12.9157 9.7964 12.8284L0.413248 7.97504C0.283601 7.90355 0.121543 7.95915 0.0486173 8.08624C-0.0243087 8.21333 0.0324116 8.3722 0.162058 8.44369L9.55331 13.3129C9.72347 13.3923 9.90174 13.44 10.08 13.44C10.2583 13.44 10.4446 13.4003 10.6148 13.3129V13.305Z" fill="white"/>
+            </svg>
           </div>
         </div>
       </div>
